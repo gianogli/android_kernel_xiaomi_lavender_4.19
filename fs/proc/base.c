@@ -1915,6 +1915,12 @@ static int do_proc_readlink(struct path *path, char __user *buffer, int buflen)
 
 	if (len > buflen)
 		len = buflen;
+	if (copy_to_user(buffer, pathname, len))
+		len = -EFAULT;
+ out:
+	free_page((unsigned long)tmp);
+	return len;
+}
 
 static int proc_pid_readlink(struct dentry * dentry, char __user * buffer, int buflen)
 {
