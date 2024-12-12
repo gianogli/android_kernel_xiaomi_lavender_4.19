@@ -1535,19 +1535,6 @@ struct task_struct {
 #endif
 	ANDROID_KABI_RESERVE(8);
 
-#ifdef CONFIG_KSU_SUSFS_SUS_MOUNT
-    union {
-        u64 android_kabi_reserved9;
-        u64 android_kabi_reserved1; 
-    };
-    union {
-        u64 android_kabi_reserved10;
-        u64 android_kabi_reserved2;
-    };
-#else
-    ANDROID_KABI_RESERVE(9);
-    ANDROID_KABI_RESERVE(10);
-#endif
 	/*
 	 * New fields for task_struct should be added above here, so that
 	 * they are included in the randomized portion of task_struct.
