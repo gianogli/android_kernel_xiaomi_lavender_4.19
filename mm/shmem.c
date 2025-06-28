@@ -38,10 +38,6 @@
 #include <linux/hugetlb.h>
 #include <linux/fs_parser.h>
 
-#ifdef CONFIG_KSU_SUSFS
-#include <linux/susfs.h>
-#endif
-
 #include <asm/tlbflush.h> /* for arch/microblaze update_mmu_cache() */
 
 static struct vfsmount *shm_mnt;

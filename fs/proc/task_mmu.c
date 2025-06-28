@@ -30,10 +30,6 @@
 #define SEQ_PUT_DEC(str, val) \
 		seq_put_decimal_ull_width(m, str, (val) << (PAGE_SHIFT-10), 8)
 
-#ifdef CONFIG_KSU_SUSFS
-#include <linux/susfs.h>
-#endif
-
 void task_mem(struct seq_file *m, struct mm_struct *mm)
 {
 	unsigned long text, lib, swap, anon, file, shmem;
