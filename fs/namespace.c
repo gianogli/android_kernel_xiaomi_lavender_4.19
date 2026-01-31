@@ -1090,13 +1090,16 @@ struct vfsmount *vfs_create_mount(struct fs_context *fc)
 {
 	struct mount *mnt;
 	struct super_block *sb;
+#ifdef CONFIG_KSU_SUSFS_SUS_MOUNT
+    const char *source_name;
+#endif
 
 	if (!fc->root)
 		return ERR_PTR(-EINVAL);
 	sb = fc->root->d_sb;
 
 #ifdef CONFIG_KSU_SUSFS_SUS_MOUNT
-	const char *source_name = fc->source ?: "none";
+	source_name = fc->source ?: "none";
 	// We keep checking for ksu process only until boot-completed stage is triggered
 	if (!susfs_is_sdcard_android_data_decrypted && susfs_is_current_ksu_domain()) {
 		mnt = susfs_alloc_sus_vfsmnt(source_name);
