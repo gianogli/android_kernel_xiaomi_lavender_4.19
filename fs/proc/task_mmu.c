@@ -972,7 +972,7 @@ static int show_smap(struct seq_file *m, void *v)
 bypass_orig_flow:
 #endif
 	m_cache_vma(m, vma);
-	
+
 	return 0;
 }
 
